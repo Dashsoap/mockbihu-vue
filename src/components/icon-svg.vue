@@ -6,20 +6,19 @@
 
 <script>
 export default {
-  
   name: 'icon-svg',
   props: {
     iconClass: {
       type: String,
-      required: true
-    }
+      required: true,
+    },
   },
   computed: {
     iconName() {
       return `#icon-${this.iconClass}`
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
@@ -31,4 +30,3 @@ export default {
   overflow: hidden;
 }
 </style>
-

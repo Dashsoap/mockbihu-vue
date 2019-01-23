@@ -1,30 +1,30 @@
 <template>
   <div id="app">
-    <my-header>
-    </my-header>
+    <my-header></my-header>
     <router-view/>
-    
   </div>
 </template>
 <script>
-import MyHeader from './components/MyHeader.vue';
+import MyHeader from "./components/MyHeader.vue";
 export default {
-  name:"app",
-  components:{
-    MyHeader,
+  name: "app",
+  components: {
+    MyHeader
   }
-}
+};
 </script>
 
 
 <style>
-body{
+body {
   margin: 0;
 }
 #app {
   color: #2c3e50;
 }
-
+button {
+  outline: none;
+}
 
 #nav a {
   font-weight: bold;
