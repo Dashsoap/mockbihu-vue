@@ -11,10 +11,11 @@
             <input type="text" class="Input" placeholder="请输入邮箱或者手机号">
           </div>
           <div class="login_password">
-            <input type="password" class="Input" placeholder="请输入密码">
-            <button type="button" class="Input_button">
-              <i class="iconfont">&#xe615;</i>
-            </button>
+            <input :type=wordType class="Input" placeholder="请输入密码">
+            <q-button class="Input_button">
+              <i class="iconfont" v-if="!isVisibal"  @click="changePassWord()">&#xe615;</i>
+              <i class="iconfont" v-else  @click="changePassWord()">&#xe608;</i>
+            </q-button>
           </div>
         </form>
         <div class="Login_option">
@@ -51,7 +52,9 @@ export default {
     return {
       login: "登录",
       register: "注册",
-      isLogin: false
+      isLogin: false,
+      isVisibal:false,
+      wordType:'password'
     };
   },
   methods: {
@@ -62,7 +65,18 @@ export default {
     changeToRegister() {
       this.isLogin = false;
       this.login = "登录";
-    }
+    },
+    changePassWord(){
+      this.isVisibal=!this.isVisibal;
+      console.log('hello');
+      if (this.isVisibal) {
+        this.wordType = 'text';
+      }
+      else{
+        this.wordType = 'password';
+      }
+      
+    },
   }
 };
 </script>
@@ -141,18 +155,9 @@ export default {
         border-radius: 0;
         .Input_button {
           position: absolute;
-          font-size: 14px;
           top: 24px;
           right: 0;
-          padding: 4px 0;
-          color: #8590a6;
           transform: translateY(-50%);
-          height: auto;
-          padding: 0;
-          line-height: inherit;
-          background-color: transparent;
-          border: none;
-          border-radius: 0;
         }
       }
       .Input {

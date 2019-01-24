@@ -1,5 +1,5 @@
 <template>
-  <button :class="`${qtype}`">
+  <button :class="`${qtype}`" type="button">
     <slot></slot>
   </button>
 </template>

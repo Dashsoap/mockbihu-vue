@@ -4,7 +4,7 @@
       <div class="login_accunt">
         <div class="Country_select">
           <div class="Pop_over">
-            <button>
+            <button type="button">
               中国 +86
               <i class="iconfont">&#xe630;</i>
             </button>
@@ -98,7 +98,6 @@ export default {
       border-bottom: 1px solid #ebebeb;
       border-radius: 0;
       .Country_select {
-        display: inline-block;
         float: left;
         min-width: 72px;
         -webkit-transform: translateY(4px);
