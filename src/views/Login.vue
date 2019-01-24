@@ -8,13 +8,29 @@
       <div class="Login_content" v-if="!isLogin">
         <form action @submit="LoginSubmit()">
           <div class="login_accunt">
-            <input type="text" class="Input" placeholder="请输入邮箱或者手机号">
+            <div>
+              <input
+                type="text"
+                class="Input"
+                placeholder="邮箱或手机号"
+                @blur="checkPhone()"
+                v-model="account"
+              >
+            </div>
+            <div></div>
           </div>
           <div class="login_password">
-            <input :type=wordType class="Input" placeholder="请输入密码">
+            <input
+              :type="wordType"
+              class="Input"
+              placeholder="请输入密码"
+              @blur="checkPassWord()"
+              v-model="password"
+            >
+            <div class="errorMask"></div>
             <q-button class="Input_button">
-              <i class="iconfont" v-if="!isVisibal"  @click="changePassWord()">&#xe615;</i>
-              <i class="iconfont" v-else  @click="changePassWord()">&#xe608;</i>
+              <i class="iconfont" v-if="!isVisibal" @click="changePassWord()">&#xe615;</i>
+              <i class="iconfont" v-else @click="changePassWord()">&#xe608;</i>
             </q-button>
           </div>
         </form>
@@ -22,7 +38,9 @@
           <q-button qtype="primary">手机验证码登录</q-button>
           <q-button>忘记密码？</q-button>
         </div>
-        <q-button class="login">登录</q-button>
+        <div @click="login_btn()">
+        <q-button qtype="login">登录</q-button>
+        </div>
         <div class="Login_footer">
           <q-button>二维码登录</q-button>
           <span class="My_point">·</span>
@@ -32,7 +50,8 @@
         </div>
       </div>
       <register-form v-else></register-form>
-      <div class="SignContainer-swich">没有账户？
+      <div class="SignContainer-swich">
+        没有账户？
         <span @click="changeToLogin()" v-if="!isLogin">注册</span>
         <span @click="changeToRegister()" v-else>登录</span>
       </div>
@@ -53,8 +72,12 @@ export default {
       login: "登录",
       register: "注册",
       isLogin: false,
-      isVisibal:false,
-      wordType:'password'
+      isVisibal: false,
+      wordType: "password",
+      cErrorMask: false,
+      pErrorMask: false,
+      account: "",
+      password: ""
     };
   },
   methods: {
@@ -66,17 +89,36 @@ export default {
       this.isLogin = false;
       this.login = "登录";
     },
-    changePassWord(){
-      this.isVisibal=!this.isVisibal;
-      console.log('hello');
+    changePassWord() {
+      this.isVisibal = !this.isVisibal;
+      console.log("hello");
       if (this.isVisibal) {
-        this.wordType = 'text';
+        this.wordType = "text";
+      } else {
+        this.wordType = "password";
       }
-      else{
-        this.wordType = 'password';
-      }
-      
     },
+    checkPhone() {
+      if (!this.account) {
+        this.cErrorMask = true;
+      } else {
+        console.log(this.account);
+      }
+    },
+    checkPassWord() {
+      if (!this.password) {
+        console.log("error");
+        this.pErrorMask = true;
+      } else {
+        console.log(this.password);
+      }
+    },
+    login_btn() {
+      console.log("???");
+
+      this.checkPhone();
+      this.checkPassWord();
+    }
   }
 };
 </script>
@@ -177,6 +219,9 @@ export default {
         border: none;
         outline: none;
         resize: none;
+        .errorMask::before {
+          content: "请输入手机号或者邮箱";
+        }
       }
     }
   }
