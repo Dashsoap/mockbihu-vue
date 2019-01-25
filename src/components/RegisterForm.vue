@@ -15,8 +15,10 @@
       </div>
       <div class="login_password">
         <input type="password" class="Input" placeholder="输入六位短信验证码">
-        <q-button qtype="primary" class="Input_button" v-on:qclick="getMessage()" v-if="myTimer===0">获取短信验证码</q-button>
-				<button v-else>{{myTimer}}秒后可以重发</button>
+        <div v-if="myphone===0">
+          <q-button qtype="primary" class="Input_button" v-on:qclick="getMessage()">获取短信验证码</q-button>
+        </div>
+        <button v-else>秒后可以重发</button>
       </div>
     </form>
     <div class="Login_option">
@@ -33,31 +35,29 @@
 <script>
 import QButton from "./QButton.vue";
 export default {
-	data() {
-		return {
-			myTimer: 0,
-		}
-	},
+  data() {
+    return {
+      myTimer: 0
+    };
+  },
   components: {
     QButton
-	},
-	methods: {
-		getMessage() {
-			var reg=/^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/
-			if(reg.test(this.myPhone)){
-				this.myTimer=60;
-			}
-			else{
-				alert('请输入正确的手机号')
-			}
-			
-		},
-	},
-	data() {
-		return {
-			myPhone: '',
-		}
-	},
+  },
+  methods: {
+    getMessage() {
+      var reg = /^(13[0-9]|14[579]|15[0-3,5-9]|16[6]|17[0135678]|18[0-9]|19[89])\d{8}$/;
+      if (reg.test(this.myPhone)) {
+        this.myTimer = 60;
+      } else {
+        alert("请输入正确的手机号");
+      }
+    }
+  },
+  data() {
+    return {
+      myPhone: ""
+    };
+  }
 };
 </script>
 

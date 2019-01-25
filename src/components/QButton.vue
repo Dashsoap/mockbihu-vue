@@ -11,20 +11,19 @@ export default {
       type: String,
       default: "default"
     }
-	},
-	methods: {
-		handleClick() {
-			this.$emit('qclick');
-		}
-	},
+  },
+  methods: {
+    handleClick() {
+      this.$emit("qclick");
+    }
+  }
 };
 </script>
 <style lang="less" scoped>
 .Forget_button {
-
 }
 .default {
-	display: inline-block;
+  display: inline-block;
   padding: 0;
   font-size: 14px;
   line-height: 32px;

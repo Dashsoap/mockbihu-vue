@@ -39,7 +39,7 @@
           <q-button>忘记密码？</q-button>
         </div>
         <div @click="login_btn()">
-        <q-button qtype="login">登录</q-button>
+          <q-button qtype="login">登录</q-button>
         </div>
         <div class="Login_footer">
           <q-button v-on:qclick="login_btn">二维码登录</q-button>
@@ -77,7 +77,8 @@ export default {
       cErrorMask: false,
       pErrorMask: false,
       account: "",
-      password: ""
+      password: "",
+      myTimer: 1
     };
   },
   methods: {
