@@ -42,7 +42,7 @@
         <q-button qtype="login">登录</q-button>
         </div>
         <div class="Login_footer">
-          <q-button>二维码登录</q-button>
+          <q-button v-on:qclick="login_btn">二维码登录</q-button>
           <span class="My_point">·</span>
           <q-button>海外手机登录</q-button>
           <span class="My_point">·</span>
@@ -113,7 +113,7 @@ export default {
         console.log(this.password);
       }
     },
-    login_btn() {
+    login_btn(O) {
       console.log("???");
 
       this.checkPhone();

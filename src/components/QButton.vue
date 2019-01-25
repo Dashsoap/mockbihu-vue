@@ -1,5 +1,5 @@
 <template>
-  <button :class="`${qtype}`" type="button">
+  <button :class="`${qtype}`" type="button" @click="handleClick()">
     <slot></slot>
   </button>
 </template>
@@ -11,7 +11,12 @@ export default {
       type: String,
       default: "default"
     }
-  }
+	},
+	methods: {
+		handleClick() {
+			this.$emit('qclick');
+		}
+	},
 };
 </script>
 <style lang="less" scoped>
